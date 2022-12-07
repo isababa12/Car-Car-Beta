@@ -56,6 +56,24 @@ function Nav() {
                 Create a model
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="automobiles"
+              >
+                Automobiles
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="automobiles/new"
+              >
+                Create a automobile
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
