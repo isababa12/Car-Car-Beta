@@ -5,7 +5,10 @@ from django.db import models
 
 class Technician(models.Model):
     name = models.CharField(max_length=100)
-    employee_number = models.PositiveSmallIntegerField(unique=True)
+    employee_number = models.PositiveIntegerField(unique=True)
+
+    def __str__(self):
+        return self.name
 
 class Appointment(models.Model):
     customer_name = models.CharField(max_length=150)
