@@ -7,6 +7,8 @@ import ModelList from "./ModelList";
 import CreateModel from "./CreateModel";
 import AutomobileList from "./AutomobileList";
 import CreateAutomobile from "./CreateAutomobile";
+import TechnicianList from "./TechnicianList";
+import CreateTechnician from "./CreateTechnician";
 
 function App() {
   return (
@@ -26,6 +28,10 @@ function App() {
           <Route path="automobiles">
             <Route index element={<AutomobileList />} />
             <Route path="new" element={<CreateAutomobile />} />
+          </Route>
+          <Route path="technicians">
+            <Route index element={<TechnicianList />} />
+            <Route path="new" element={<CreateTechnician />} />
           </Route>
         </Routes>
       </div>
