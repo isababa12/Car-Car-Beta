@@ -24,6 +24,8 @@ class ModelList extends React.Component {
           <thead>
             <tr>
               <th>Model</th>
+              <th>Manufacturer</th>
+              <th>Picture</th>
             </tr>
           </thead>
           <tbody>
@@ -31,8 +33,16 @@ class ModelList extends React.Component {
               return (
                 <tr key={model.id}>
                   <td>{model.name}</td>
-                  <td>{model.picture_url}</td>
                   <td>{model.manufacturer.name}</td>
+                  <td>
+                    <img
+                      className="img-thumbnail"
+                      src={model.picture_url}
+                      height={100}
+                      width={100}
+                      alt="model"
+                    />
+                  </td>
                 </tr>
               );
             })}

@@ -56,6 +56,10 @@ class CreateModel extends React.Component {
   }
 
   render() {
+    let alertClasses = "alert alert-success w-50 mx-auto mt-3 d-none";
+    if (this.state.submitted) {
+      alertClasses = "alert alert-success w-50 mx-auto mt-3";
+    }
     return (
       <div className="container">
         <div className="row">
@@ -114,6 +118,9 @@ class CreateModel extends React.Component {
               </form>
             </div>
           </div>
+        </div>
+        <div className={alertClasses} role="alert">
+          Vehicle model successfully created!
         </div>
       </div>
     );

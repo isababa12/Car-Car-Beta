@@ -52,6 +52,10 @@ class CreateManufacturer extends React.Component {
   }
 
   render() {
+    let alertClasses = "alert alert-success w-50 mx-auto mt-3 d-none";
+    if (this.state.submitted) {
+      alertClasses = "alert alert-success w-50 mx-auto mt-3";
+    }
     return (
       <div className="container">
         <div className="row">
@@ -78,6 +82,9 @@ class CreateManufacturer extends React.Component {
               </form>
             </div>
           </div>
+        </div>
+        <div className={alertClasses} role="alert">
+          Manufacturer successfully created!
         </div>
       </div>
     );
