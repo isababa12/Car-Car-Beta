@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SalesPerson, Customer
+from .models import SalesPerson, SalesCustomer, SalesRecord
 
 
 # Register your models here.
@@ -7,6 +7,10 @@ from .models import SalesPerson, Customer
 class SalesPersonAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Customer)
-class CustomerAdmin(admin.ModelAdmin):
+@admin.register(SalesCustomer)
+class SalesCustomerAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(SalesRecord)
+class SalesRecordAdmin(admin.ModelAdmin):
     pass
