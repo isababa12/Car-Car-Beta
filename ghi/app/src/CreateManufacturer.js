@@ -4,7 +4,7 @@ class CreateManufacturer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      manufacturer: "",
+      name: "",
       manufacturers: [],
       submitted: false,
     };
@@ -30,8 +30,6 @@ class CreateManufacturer extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     const data = { ...this.state };
-    data.name = data.manufacturer;
-    delete data.manufacturer;
     delete data.manufacturers;
     delete data.submitted;
     const url = "http://localhost:8100/api/manufacturers/";
@@ -45,7 +43,7 @@ class CreateManufacturer extends React.Component {
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
       const cleared = {
-        manufacturer: "",
+        name: "",
         submitted: true,
       };
       this.setState(cleared);
@@ -59,20 +57,20 @@ class CreateManufacturer extends React.Component {
         <div className="row">
           <div className="offset-3 col-6">
             <div className="shadow p-4 mt-4">
-              <h1>Create a new manufacturer</h1>
+              <h1>Create a manufacturer</h1>
               <form onSubmit={this.handleSubmit} id="create-manufacturer-form">
                 <div className="form-floating mb-3">
                   <input
                     onChange={this.handleInputChange}
-                    value={this.state.manufacturer}
-                    placeholder="Manufacturer"
+                    value={this.state.name}
+                    placeholder="name"
                     required
                     type="text"
-                    name="manufacturer"
-                    id="manufacturer"
+                    name="name"
+                    id="name"
                     className="form-control"
                   />
-                  <label htmlFor="manufacturer">Manufacturer</label>
+                  <label htmlFor="name">Name</label>
                 </div>
                 <button id="submit" className="btn btn-primary">
                   Create
@@ -81,9 +79,6 @@ class CreateManufacturer extends React.Component {
             </div>
           </div>
         </div>
-        {/* <div className={alertClasses} role="alert">
-          Hat successfully created!
-        </div> */}
       </div>
     );
   }
