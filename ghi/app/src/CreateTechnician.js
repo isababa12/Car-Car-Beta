@@ -89,7 +89,7 @@ class CreateTechnician extends React.Component {
                     id="employee_number"
                     className="form-control"
                   />
-                  <label htmlFor="employee_number">Employee number</label>
+                  <label htmlFor="employee_number">Employee ID</label>
                 </div>
                 <button id="submit" className="btn btn-primary">
                   Create

@@ -68,6 +68,7 @@ class CreateAppointment extends React.Component {
     if (this.state.submitted) {
       alertClasses = "alert alert-success w-50 mx-auto mt-3";
     }
+    let today = new Date();
     return (
       <div className="container">
         <div className="row">
@@ -86,7 +87,7 @@ class CreateAppointment extends React.Component {
                     id="name"
                     className="form-control"
                   />
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="name">Owner name</label>
                 </div>
                 <div className="form-floating mb-3">
                   <input
@@ -111,6 +112,8 @@ class CreateAppointment extends React.Component {
                     type="datetime-local"
                     name="time"
                     id="time"
+                    min={today.toISOString()}
+                    step="900"
                     className="form-control"
                   />
                   <label htmlFor="time">Time</label>
