@@ -6,6 +6,7 @@ class AppointmentsByVin extends React.Component {
     this.state = {
       vin: "",
       appointments: [],
+      error: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -21,12 +22,14 @@ class AppointmentsByVin extends React.Component {
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
-      this.setState({ appointments: data });
+      this.setState({ appointments: data, error: false });
+    } else {
+      this.setState({ error: true });
     }
   }
 
-  discountCheck(discount) {
-    if (discount) {
+  truthCheck(value) {
+    if (value) {
       return <td>&#10004;</td>;
     } else {
       return <td></td>;
@@ -34,6 +37,10 @@ class AppointmentsByVin extends React.Component {
   }
 
   render() {
+    let alertClasses = "alert alert-danger d-none";
+    if (this.state.error === true) {
+      alertClasses = "alert alert-danger";
+    }
     return (
       <>
         <div className="input-group mb-3 mt-3">
@@ -68,31 +75,31 @@ class AppointmentsByVin extends React.Component {
               <th>Technician</th>
               <th>Reason</th>
               <th>VIP?</th>
+              <th align="center">Completed?</th>
             </tr>
           </thead>
           <tbody>
             {this.state.appointments.map((appointment) => {
               const dateObj = new Date(appointment.time);
               const options = { timeStyle: "short" };
-              if (
-                appointment.canceled === false &&
-                appointment.completed === false
-              ) {
-                return (
-                  <tr key={appointment.id}>
-                    <td>{appointment.vehicle_vin}</td>
-                    <td>{appointment.customer_name}</td>
-                    <td>{dateObj.toLocaleDateString()}</td>
-                    <td>{dateObj.toLocaleTimeString([], options)}</td>
-                    <td>{appointment.technician.name}</td>
-                    <td>{appointment.reason}</td>
-                    {this.discountCheck(appointment.discount)}
-                  </tr>
-                );
-              }
+              return (
+                <tr key={appointment.id}>
+                  <td>{appointment.vehicle_vin}</td>
+                  <td>{appointment.customer_name}</td>
+                  <td>{dateObj.toLocaleDateString()}</td>
+                  <td>{dateObj.toLocaleTimeString([], options)}</td>
+                  <td>{appointment.technician.name}</td>
+                  <td>{appointment.reason}</td>
+                  {this.truthCheck(appointment.discount)}
+                  {this.truthCheck(appointment.completed)}
+                </tr>
+              );
             })}
           </tbody>
         </table>
+        <div className={alertClasses} role="alert">
+          Vehicle VIN not found! Please re-enter input.
+        </div>
       </>
     );
   }
