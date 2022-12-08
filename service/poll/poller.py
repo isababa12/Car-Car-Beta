@@ -17,13 +17,12 @@ def poll():
     while True:
         print('Service poller polling for data')
         try:
-            # response = requests.get("http://inventory-api:8000/api/automobiles/")
-            # content = json.loads(response.content)
-            # for auto in content["autos"]:
-            #     AutomobileVO.objects.update_or_create(
-            #         {"vin":auto["vin"]}
-            #     )
-            pass
+            response = requests.get("http://inventory-api:8000/api/automobiles/")
+            content = json.loads(response.content)
+            for auto in content["autos"]:
+                AutomobileVO.objects.update_or_create(
+                    vin = auto["vin"],
+                )
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)

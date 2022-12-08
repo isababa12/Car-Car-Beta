@@ -5,13 +5,6 @@ from .models import Technician, Appointment, AutomobileVO
 from common.json import ModelEncoder
 
 
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        "vin"
-    ]
-
-
 class TechnicianEncoder(ModelEncoder):
     model = Technician
     properties = [
@@ -19,21 +12,26 @@ class TechnicianEncoder(ModelEncoder):
         "employee_number",
     ]
 
+    def get_extra_data(self, o):
+        return {"id": o.id}
+
 
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
         "customer_name",
-        "appointment_time",
+        "time",
         "reason",
+        "vehicle_vin",
+        "discount",
         "technician",
-        "automobile",
     ]
     encoders = {
         "technician": TechnicianEncoder(),
-        "automobile": AutomobileVOEncoder(),
     }
 
+    def get_extra_data(self, o):
+        return {"id": o.id}
 
 @require_http_methods(["GET", "POST"])
 def api_technicians(request):
@@ -66,8 +64,11 @@ def api_appointments(request):
             content = json.loads(request.body)
             technician = Technician.objects.get(pk=content["technician"])
             content["technician"] = technician
-            automobile = AutomobileVO.objects.get(vin=content["vin"])
-            content["automobile"] = automobile
+            try:
+                automobile = AutomobileVO.objects.get(vin=content["vehicle_vin"])
+                content["discount"] = True
+            except:
+                content["discount"] = False
             appointment = Appointment.objects.create(**content)
             return JsonResponse(
                 appointment,
@@ -80,13 +81,3 @@ def api_appointments(request):
             )
             response.status_code = 400
             return response
-
-
-def api_automobiles(request):
-    if request.method == "GET":
-        technicians = AutomobileVO.objects.all()
-        return JsonResponse(
-            {"automobiles": technicians},
-            encoder=AutomobileVOEncoder,
-            safe=False,
-        )

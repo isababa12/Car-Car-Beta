@@ -7,6 +7,10 @@ import ModelList from "./ModelList";
 import CreateModel from "./CreateModel";
 import AutomobileList from "./AutomobileList";
 import CreateAutomobile from "./CreateAutomobile";
+import TechnicianList from "./TechnicianList";
+import CreateTechnician from "./CreateTechnician";
+import AppointmentList from "./AppointmentList";
+import CreateAppointment from "./CreateAppointment";
 import CreateSalesPerson from "./CreateSalesPerson"
 import SalesPersonList from "./SalespeopleList";
 import SalesCustomerList from "./SalesCustomerList";
@@ -32,6 +36,14 @@ function App() {
           <Route path="automobiles">
             <Route index element={<AutomobileList />} />
             <Route path="new" element={<CreateAutomobile />} />
+          </Route>
+          <Route path="technicians">
+            <Route index element={<TechnicianList />} />
+            <Route path="new" element={<CreateTechnician />} />
+          </Route>
+          <Route path="appointments">
+            <Route index element={<AppointmentList />} />
+            <Route path="new" element={<CreateAppointment />} />
           </Route>
           <Route path="salespeople">
             <Route index element={<SalesPersonList/>} />
