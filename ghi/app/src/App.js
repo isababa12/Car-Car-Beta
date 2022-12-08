@@ -11,6 +11,7 @@ import TechnicianList from "./TechnicianList";
 import CreateTechnician from "./CreateTechnician";
 import AppointmentList from "./AppointmentList";
 import CreateAppointment from "./CreateAppointment";
+import AppointmentsByVin from "./AppointmentsByVin";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="appointments">
             <Route index element={<AppointmentList />} />
             <Route path="new" element={<CreateAppointment />} />
+            <Route path="vin" element={<AppointmentsByVin />} />
           </Route>
         </Routes>
       </div>
