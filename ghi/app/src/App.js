@@ -9,6 +9,7 @@ import AutomobileList from "./AutomobileList";
 import CreateAutomobile from "./CreateAutomobile";
 import TechnicianList from "./TechnicianList";
 import CreateTechnician from "./CreateTechnician";
+import AppointmentList from "./AppointmentList";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
           <Route path="technicians">
             <Route index element={<TechnicianList />} />
             <Route path="new" element={<CreateTechnician />} />
+          </Route>
+          <Route path="appointments">
+            <Route index element={<AppointmentList />} />
           </Route>
         </Routes>
       </div>

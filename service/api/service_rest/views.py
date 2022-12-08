@@ -30,6 +30,8 @@ class AppointmentEncoder(ModelEncoder):
         "technician": TechnicianEncoder(),
     }
 
+    def get_extra_data(self, o):
+        return {"id": o.id}
 
 @require_http_methods(["GET", "POST"])
 def api_technicians(request):
