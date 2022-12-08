@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from .models import Technician, Appointment
+from .models import Technician, Appointment, AutomobileVO
 from common.json import ModelEncoder
 
 
@@ -62,7 +62,11 @@ def api_appointments(request):
             content = json.loads(request.body)
             technician = Technician.objects.get(pk=content["technician"])
             content["technician"] = technician
-            content["discount"] = True
+            try:
+                automobile = AutomobileVO.objects.get(vin=content["vehicle_vin"])
+                content["discount"] = True
+            except:
+                content["discount"] = False
             appointment = Appointment.objects.create(**content)
             return JsonResponse(
                 appointment,
