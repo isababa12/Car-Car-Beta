@@ -159,6 +159,15 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
+                to="salesrecord/filter"
+              >
+                Salesperson Sales
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
                 to="salesrecord/new"
               >
                 Create a Sales Record

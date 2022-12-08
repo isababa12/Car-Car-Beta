@@ -13,7 +13,8 @@ class SalesRecordList extends React.Component {
         const response = await fetch(url);
         if (response.ok) {
           const data = await response.json();
-          this.setState({ sales_record: data.sales_record });
+          console.log(data)
+          this.setState({ sales_record: data });
         }
     }
 
@@ -31,7 +32,8 @@ class SalesRecordList extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.sales_record.map((sales_record) => {
+                {this.state?.sales_record?.map((sales_record) => {
+                  console.log(sales_record)
                   return (
                     <tr key={sales_record.id}>
                       <td>{sales_record.sales_person.name}</td>

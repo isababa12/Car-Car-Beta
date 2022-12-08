@@ -132,6 +132,6 @@ def api_show_sales(request, pk):
     if request.method == "GET":
         sales = SalesRecord.objects.filter(sales_person=pk)
         return JsonResponse(
-            {"sales": sales},
+            {"sales_record": sales},
             encoder=SalesRecordEncoder,
             safe=False)

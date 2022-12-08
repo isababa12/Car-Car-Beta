@@ -24,13 +24,16 @@ class SalesPersonList extends React.Component {
               <thead>
                 <tr>
                   <th>Salespeople</th>
+                  <th>Employee Number</th>
                 </tr>
               </thead>
               <tbody>
                 {this.state.sales_person.map((sales_person) => {
+                  console.log(sales_person)
                   return (
                     <tr key={sales_person.id}>
                       <td>{sales_person.name}</td>
+                      <td>{sales_person.number}</td>
                     </tr>
                   );
                 })}

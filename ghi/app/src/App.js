@@ -17,6 +17,7 @@ import SalesCustomerList from "./SalesCustomerList";
 import CreateSalesCustomer from "./CreateSalesCustomer";
 import SalesRecordList from "./SalesRecordList";
 import CreateSalesRecord from "./CreateSalesRecord";
+import SalesPersonSales from "./SalesPersonSales";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
           <Route path="salesrecord">
             <Route index element={<SalesRecordList/>} />
             <Route path="new" element={<CreateSalesRecord/>}/>
+            <Route path="filter" element={<SalesPersonSales/>}/>
           </Route>
         </Routes>
       </div>
