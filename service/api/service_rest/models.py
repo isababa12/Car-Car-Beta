@@ -30,3 +30,11 @@ class Appointment(models.Model):
         related_name="appointments",
         on_delete=models.CASCADE,
     )
+
+    def cancel(self):
+        self.canceled = True
+        self.save()
+
+    def complete(self):
+        self.completed = True
+        self.save()

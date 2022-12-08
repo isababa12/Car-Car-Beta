@@ -76,9 +76,7 @@ def api_list_appointments(request):
                 content["discount"] = False
             content["completed"] = False
             content["canceled"] = False
-            print(content)
             appointment = Appointment.objects.create(**content)
-            print(appointment)
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
@@ -107,3 +105,20 @@ def api_get_appointments_by_vin(request, vin):
         )
         response.status_code = 404
         return response
+
+
+@require_http_methods(["PUT"])
+def api_cancel_appointment(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    appointment.cancel()
+    return JsonResponse(
+        {"canceled": appointment.canceled}
+    )
+
+
+def api_complete_appointment(request, pk):
+    appointment = Appointment.objects.get(id=pk)
+    appointment.complete()
+    return JsonResponse(
+        {"completed": appointment.completed}
+    )
