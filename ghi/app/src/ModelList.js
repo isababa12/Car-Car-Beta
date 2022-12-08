@@ -20,6 +20,7 @@ class ModelList extends React.Component {
   render() {
     return (
       <>
+        <h2 className="my-3">Models</h2>
         <table className="table table-striped">
           <thead>
             <tr>

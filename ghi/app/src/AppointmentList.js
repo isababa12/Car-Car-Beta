@@ -28,6 +28,7 @@ class AppointmentList extends React.Component {
   render() {
     return (
       <>
+        <h2 className="my-3">Service appointments</h2>
         <table className="table table-striped">
           <thead>
             <tr>

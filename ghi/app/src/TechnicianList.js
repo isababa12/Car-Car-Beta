@@ -20,6 +20,7 @@ class TechnicianList extends React.Component {
   render() {
     return (
       <>
+        <h2 className="my-3">Technicians</h2>
         <table className="table table-striped">
           <thead>
             <tr>

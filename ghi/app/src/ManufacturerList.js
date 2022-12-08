@@ -20,6 +20,7 @@ class ManufacturerList extends React.Component {
   render() {
     return (
       <>
+        <h2 className="my-3">Manufacturers</h2>
         <table className="table table-striped">
           <thead>
             <tr>

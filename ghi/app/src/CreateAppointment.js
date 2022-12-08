@@ -73,7 +73,7 @@ class CreateAppointment extends React.Component {
         <div className="row">
           <div className="offset-3 col-6">
             <div className="shadow p-4 mt-4">
-              <h1>Create a appointment</h1>
+              <h1>Create a service appointment</h1>
               <form onSubmit={this.handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">
                   <input
