@@ -97,6 +97,7 @@ class CreateAppointment extends React.Component {
                     type="text"
                     name="vehicle_vin"
                     id="vehicle_vin"
+                    maxLength={17}
                     className="form-control"
                   />
                   <label htmlFor="vehicle_vin">Vehicle VIN</label>
