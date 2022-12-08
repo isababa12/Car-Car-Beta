@@ -18,7 +18,7 @@ class CreateSalesRecord extends React.Component {
     }
 
     async componentDidMount() {
-        const autosUrl = "http://localhost:8100/api/automobiles/";
+        const autosUrl = "http://localhost:8090/api/auto_vos/";
         const autosResponse = await fetch(autosUrl);
         const salesPersonUrl = "http://localhost:8090/api/salespeople/";
         const salesPersonResponse = await fetch(salesPersonUrl);
@@ -28,7 +28,7 @@ class CreateSalesRecord extends React.Component {
           const autosData = await autosResponse.json();
           const salesPersonData = await salesPersonResponse.json();
           const customerData = await customerResponse.json();
-          this.setState({ automobiles: autosData.autos });
+          this.setState({ automobiles: autosData.filter((x)=> x.status === "available") });
           this.setState({ sales_persons: salesPersonData.sales_person });
           this.setState({ sales_customers: customerData.sales_customer });
         }
@@ -124,7 +124,7 @@ class CreateSalesRecord extends React.Component {
                       {this.state?.automobiles?.map((automobile)=> {
                         return(
                             <option key={automobile.vin} value={automobile.vin}>
-                                {automobile.vin}
+                                {automobile.vin} {automobile.year} {automobile.manufacturer} {automobile.model} in {automobile.color}
                             </option>
                         )
                       })}

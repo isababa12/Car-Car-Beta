@@ -9,10 +9,13 @@ import json
 class AutomobileVODetailEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
+        'model',
+        'manufacturer',
         'color',
         'year',
         "vin",
         "import_href",
+        "status"
     ]
 
 class SalesPersonEncoder(ModelEncoder):
@@ -104,7 +107,7 @@ def api_list_sales_record(request):
 
         automobile = AutomobileVO.objects.get(vin=content["automobile"])
         content["automobile"] = automobile
-        AutomobileVO.objects.filter(vin=content["automobile"])
+        AutomobileVO.objects.filter(vin=content["automobile"]).update(status="sold")
 
         sales_person = SalesPerson.objects.get(id=content["sales_person"])
         content["sales_person"] = sales_person
