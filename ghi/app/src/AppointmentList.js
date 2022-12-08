@@ -17,6 +17,14 @@ class AppointmentList extends React.Component {
     }
   }
 
+  discountCheck(discount) {
+    if (discount) {
+      return <td>&#10004;</td>;
+    } else {
+      return <td></td>;
+    }
+  }
+
   render() {
     return (
       <>
@@ -29,6 +37,7 @@ class AppointmentList extends React.Component {
               <th>Time</th>
               <th>Technician</th>
               <th>Reason</th>
+              <th>VIP?</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +52,7 @@ class AppointmentList extends React.Component {
                   <td>{dateObj.toLocaleTimeString([], options)}</td>
                   <td>{appointment.technician.name}</td>
                   <td>{appointment.reason}</td>
+                  {this.discountCheck(appointment.discount)}
                 </tr>
               );
             })}
