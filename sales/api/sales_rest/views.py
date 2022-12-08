@@ -35,11 +35,11 @@ class SalesCustomerEncoder(ModelEncoder):
 class SalesRecordEncoder(ModelEncoder):
     model = SalesRecord
     properties = [
+        'id',
         'sale_price',
         'automobile',
         'sales_person',
         'sales_customer',
-        'id',
     ]
     encoders = {
         "automobile": AutomobileVODetailEncoder(),
@@ -76,7 +76,7 @@ def api_list_sales_customer(request):
     if request.method == "GET":
         sales_customer = SalesCustomer.objects.all()
         return JsonResponse(
-            {"sales_customers": sales_customer},
+            {"sales_customer": sales_customer},
             encoder=SalesCustomerEncoder
         )
     else:
@@ -95,27 +95,21 @@ def api_list_sales_record(request):
     if request.method == "GET":
         sales_record = SalesRecord.objects.all()
         return JsonResponse(
-            {"sales_record": sales_record},
-            encoder=SalesRecordEncoder
+            sales_record,
+            encoder=SalesRecordEncoder,
+            safe=False
         )
     else:
         content = json.loads(request.body)
-        try:
-            automobile = AutomobileVO.objects.get(vin=content["automobile"])
-            content["automobile"] = automobile
-            AutomobileVO.objects.filter(vin=content["automobile"])
 
-            sales_person = SalesPerson.objects.get(
-                number=content["sales_person"]
-            )
-            content["sales_person"] = sales_person
-            sales_customer = SalesCustomer.objects.get(phone=content["sales_customer"])
-            content["sales_customer"] = sales_customer
-        except:
-            return JsonResponse(
-                {"message": "Sales Record cannot be created"},
-                status=400
-            )
+        automobile = AutomobileVO.objects.get(vin=content["automobile"])
+        content["automobile"] = automobile
+        AutomobileVO.objects.filter(vin=content["automobile"])
+
+        sales_person = SalesPerson.objects.get(id=content["sales_person"])
+        content["sales_person"] = sales_person
+        sales_customer = SalesCustomer.objects.get(id=content["sales_customer"])
+        content["sales_customer"] = sales_customer
         sales_record = SalesRecord.objects.create(**content)
         return JsonResponse(
             sales_record,
