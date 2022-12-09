@@ -31,7 +31,7 @@ docker compose up
 
 ---
 
-![diagram](ghi\app\public\CarCar-microservice-diagram.png)
+![diagram](./resources/CarCar-microservice-diagram.png "microservice diagram")
 
 ## **Services**
 
@@ -144,8 +144,11 @@ Response:
 ```
 
 ## **Sales**
+
 ---
+
 ### Sales API
+
 The sales microservice has 4 models:
 
 The AutomobileVO model contains all the necessary details for an automobile's listing on the front-end. This includes the model, manufacturer, color, year, vin, import_href, as well as a sold/available status. Using the poller, we can sync up all of the details with the inventory automobile with the same VIN. With the model, manufacturer, color, and year, we can also supply those details in the dropdown menu of the Sales Record Form to make selecting the correct car easier.
@@ -162,33 +165,34 @@ The SalesRecord model contains the important parts of a SalesRecord. Sales Recor
 
 `Base URL: http://localhost:8090`
 
-| Method | URL                 | What it does                           |
-| ------ | ------------------- | -------------------------------------- |
-| GET    | /api/salespeople/          | Lists all sales people            |
-| GET    | /api/salescustomer/          | Lists all sales customers
-| GET   | /api/salesrecord/          | Lists the entire sale history |
-| GET    | /api/salesrecord/\<int:pk> | Lists the entire sale history of an individual sales person by their id         |
-| POST | /api/salespeople/ | Creates a sales person                   |
-| POST | /api/salescustomer/ | Creates a sales customer                |
-| POST | /api/salesrecord/ | Creates a sales record                  |
+| Method | URL                        | What it does                                                            |
+| ------ | -------------------------- | ----------------------------------------------------------------------- |
+| GET    | /api/salespeople/          | Lists all sales people                                                  |
+| GET    | /api/salescustomer/        | Lists all sales customers                                               |
+| GET    | /api/salesrecord/          | Lists the entire sale history                                           |
+| GET    | /api/salesrecord/\<int:pk> | Lists the entire sale history of an individual sales person by their id |
+| POST   | /api/salespeople/          | Creates a sales person                                                  |
+| POST   | /api/salescustomer/        | Creates a sales customer                                                |
+| POST   | /api/salesrecord/          | Creates a sales record                                                  |
 
 ### Restful API endpoints for Inventory
 
 `Base URL: http://localhost:8100`
 
-| Method | URL                 | What it does                           |
-| ------ | ------------------- | -------------------------------------- |
-| GET    | /api/automobiles/          | Lists all automobiles           |
-| GET    | /api/automobiles/\<str:vin>/| Show details for a specific automobile|
-| GET    | /api/manufacturers/          | Lists all automobile manufacturers |
-| GET    | /api/models/                 | Lists all automobile models|
-| POST   | /api/automobiles/          | Creates an automobile |
-| POST   | /api/manufacturers/          | Creates an automobile manufacturer |
-| POST   | /api/models/          | Creates an automobile model |
-| PUT    | /api/automobiles/\<str:vin>/ | Updates the automobile by VIN|
-| DEL | /api/automobiles/\<str:vin>/ | Deletes an automobile by VIN|
+| Method | URL                          | What it does                           |
+| ------ | ---------------------------- | -------------------------------------- |
+| GET    | /api/automobiles/            | Lists all automobiles                  |
+| GET    | /api/automobiles/\<str:vin>/ | Show details for a specific automobile |
+| GET    | /api/manufacturers/          | Lists all automobile manufacturers     |
+| GET    | /api/models/                 | Lists all automobile models            |
+| POST   | /api/automobiles/            | Creates an automobile                  |
+| POST   | /api/manufacturers/          | Creates an automobile manufacturer     |
+| POST   | /api/models/                 | Creates an automobile model            |
+| PUT    | /api/automobiles/\<str:vin>/ | Updates the automobile by VIN          |
+| DEL    | /api/automobiles/\<str:vin>/ | Deletes an automobile by VIN           |
 
 ---
+
 ### AutomobileVO
 
 The AutomobileVO polls from Inventory's Automobile model and creates a new VO synced up with corresponding information necessary for the sales front-end.
@@ -203,24 +207,27 @@ The AutomobileVO polls from Inventory's Automobile model and creates a new VO sy
 2. Change the HTTP request type to POST and type in `http://localhost:8100/api/manufacturers/`
 3. Switch the input type from "Body" (No Body) to JSON by clicking its dropdown menu then clicking JSON
 4. Enter a JSON body in the following format (you may copy/paste the sample code):
-    - The model for the employee number is set to unique, so no two employees may have the same employee number
-    ```
-    {
-        "name": "Subaru",
-    }
-    ```
+   - The model for the employee number is set to unique, so no two employees may have the same employee number
+   ```
+   {
+       "name": "Subaru",
+   }
+   ```
 5. Press "Send" and Insomnia will return a POST request similar to this:
-    ```
-    {
-        "href": "/api/manufacturers/1/",
-        "id": 1,
-        "name": "Subaru"
-    }
 
-1. Find the "Create a Manufacturer" link at the top within the NavBar or in the Nav's Drop down menu
-2. Click "Create a Manufacturer"
-3. Enter the a name into the field
-4. Hit create, if all necessary fields are filled then a success message will pop up notifying you that your Manufacturer has been created
+   ```
+   {
+       "href": "/api/manufacturers/1/",
+       "id": 1,
+       "name": "Subaru"
+   }
+
+   ```
+
+6. Find the "Create a Manufacturer" link at the top within the NavBar or in the Nav's Drop down menu
+7. Click "Create a Manufacturer"
+8. Enter the a name into the field
+9. Hit create, if all necessary fields are filled then a success message will pop up notifying you that your Manufacturer has been created
 
 ### How to create a model
 
@@ -228,28 +235,28 @@ The AutomobileVO polls from Inventory's Automobile model and creates a new VO sy
 2. Change the HTTP request type to POST and type in `http://localhost:8100/api/models/`
 3. Switch the input type from "Body" (No Body) to JSON by clicking its dropdown menu then clicking JSON
 4. Enter a JSON body in the following format (you may copy/paste the sample code):
-    - The manufacturer_id corresponds to the respective id of the manufacturer
-    ```
-    {
-        "name": "WRX",
-        "picture_url": "https://cdn.oem-production.subaru.com.au/1.0.2-hotfix-SUB-3273-subs/Assets/nav-menu/my22-wrx-new.png",
-        "manufacturer_id": 1
-    }
-    ```
+   - The manufacturer_id corresponds to the respective id of the manufacturer
+   ```
+   {
+       "name": "WRX",
+       "picture_url": "https://cdn.oem-production.subaru.com.au/1.0.2-hotfix-SUB-3273-subs/Assets/nav-menu/my22-wrx-new.png",
+       "manufacturer_id": 1
+   }
+   ```
 5. Press "Send" and Insomnia will return a POST request similar to this:
-    ```
-    {
-        "href": "/api/models/1/",
-        "id": 1,
-        "name": "WRX",
-        "picture_url": "https://cdn.oem-production.subaru.com.au/1.0.2-hotfix-SUB-3273-subs/Assets/nav-menu/my22-wrx-new.png",
-        "manufacturer": {
-            "href": "/api/manufacturers/1/",
-            "id": 1,
-            "name": "Subaru"
-        }
-    }
-    ```
+   ```
+   {
+       "href": "/api/models/1/",
+       "id": 1,
+       "name": "WRX",
+       "picture_url": "https://cdn.oem-production.subaru.com.au/1.0.2-hotfix-SUB-3273-subs/Assets/nav-menu/my22-wrx-new.png",
+       "manufacturer": {
+           "href": "/api/manufacturers/1/",
+           "id": 1,
+           "name": "Subaru"
+       }
+   }
+   ```
 
 ### How to create an Automobile (FINALLY!)
 
@@ -257,36 +264,36 @@ The AutomobileVO polls from Inventory's Automobile model and creates a new VO sy
 2. Change the HTTP request type to POST and type in `http://localhost:8100/api/automobiles/`
 3. Switch the input type from "Body" (No Body) to JSON by clicking its dropdown menu then clicking JSON
 4. Enter a JSON body in the following format (you may copy/paste the sample code):
-    - The model_id corresponds to the respective id of the model
-    ```
-    {
-        "color": "blue",
-        "year": 2022,
-        "vin": "1234567890QWERTYU",
-        "model_id": 1
-    }
-    ```
+   - The model_id corresponds to the respective id of the model
+   ```
+   {
+       "color": "blue",
+       "year": 2022,
+       "vin": "1234567890QWERTYU",
+       "model_id": 1
+   }
+   ```
 5. Press "Send" and Insomnia will return a POST request similar to this:
-    ```
-    {
-        "href": "/api/automobiles/1234567890QWERTYU/",
-        "id": 1,
-        "color": "blue",
-        "year": 2022,
-        "vin": "1234567890QWERTYU",
-        "model": {
-            "href": "/api/models/1/",
-            "id": 1,
-            "name": "WRX STI",
-            "picture_url": "https://cdn.motor1.com/images/mgl/MQPEn/s1/subaru-wrx-sti-ej20-final-edition.webp",
-            "manufacturer": {
-                "href": "/api/manufacturers/1/",
-                "id": 1,
-                "name": "Subaru"
-            }
-        }
-    }
-    ```
+   ```
+   {
+       "href": "/api/automobiles/1234567890QWERTYU/",
+       "id": 1,
+       "color": "blue",
+       "year": 2022,
+       "vin": "1234567890QWERTYU",
+       "model": {
+           "href": "/api/models/1/",
+           "id": 1,
+           "name": "WRX STI",
+           "picture_url": "https://cdn.motor1.com/images/mgl/MQPEn/s1/subaru-wrx-sti-ej20-final-edition.webp",
+           "manufacturer": {
+               "href": "/api/manufacturers/1/",
+               "id": 1,
+               "name": "Subaru"
+           }
+       }
+   }
+   ```
 
 ## How to create a Sales Person
 
@@ -294,20 +301,21 @@ The AutomobileVO polls from Inventory's Automobile model and creates a new VO sy
 2. Change the HTTP request type to POST and type in `http://localhost:8090/api/salespeople/`
 3. Switch the input type from "Body" (No Body) to JSON by clicking its dropdown menu then clicking JSON
 4. Enter a JSON body in the following format (you may copy/paste the sample code):
-    - The model for the employee number is set to unique, so no two employees may have the same employee number
-    ```
-    {
-        "name": "Isaiah Lin",
-        "number": "001"
-    }
-    ```
+   - The model for the employee number is set to unique, so no two employees may have the same employee number
+   ```
+   {
+       "name": "Isaiah Lin",
+       "number": "001"
+   }
+   ```
 5. Press "Send" and Insomnia will return a POST request similar to this:
-    ```
-    {
-        "name": "Isaiah Lin",
-        "number": "001",
-        "id": 1
-    }
+   ```
+   {
+       "name": "Isaiah Lin",
+       "number": "001",
+       "id": 1
+   }
+   ```
 
 ## How to create a Sales Customer
 
@@ -315,23 +323,23 @@ The AutomobileVO polls from Inventory's Automobile model and creates a new VO sy
 2. Change the HTTP request type to POST and type in `http://localhost:8090/api/salescustomer/`
 3. Switch the input type from "Body" (No Body) to JSON by clicking its dropdown menu then clicking JSON
 4. Enter a JSON body in the following format (you may copy/paste the sample code):
-    - The address field is not required to create a sales customer
-    ```
-    {
-        "name": "Isaiah Lin",
-        "address": "123 Main St, LA, CA"
-        "phone": "555-555-5555"
-    }
-    ```
+   - The address field is not required to create a sales customer
+   ```
+   {
+       "name": "Isaiah Lin",
+       "address": "123 Main St, LA, CA"
+       "phone": "555-555-5555"
+   }
+   ```
 5. Press "Send" and Insomnia will return a POST request similar to this:
-    ```
-    {
-        "name": "Isaiah Lin",
-        "address": "123 Main St, LA, CA",
-        "phone": "555-555-5555",
-        "id": 1
-    }
-    ```
+   ```
+   {
+       "name": "Isaiah Lin",
+       "address": "123 Main St, LA, CA",
+       "phone": "555-555-5555",
+       "id": 1
+   }
+   ```
 
 ## How to create a Sales Customer
 
@@ -339,42 +347,42 @@ The AutomobileVO polls from Inventory's Automobile model and creates a new VO sy
 2. Change the HTTP request type to POST and type in `http://localhost:8090/api/salesrecord/`
 3. Switch the input type from "Body" (No Body) to JSON by clicking its dropdown menu then clicking JSON
 4. Enter a JSON body in the following format (you may copy/paste the sample code):
-    - The sale_price field is a numerical field for a dollar amount
-    - The sales_person and sales_customer fields correspond to their respective IDs
-    - The automobile field corresponds to an AutomobileVO's respective VIN
-    - If you followed this tutorial in order, these should post properly
-    ```
-    {
-        "sale_price": 42000,
-        "sales_person": 1,
-        "sales_customer": 1,
-        "automobile": "1234567890QWERTYU"
-    }
-    ```
+   - The sale_price field is a numerical field for a dollar amount
+   - The sales_person and sales_customer fields correspond to their respective IDs
+   - The automobile field corresponds to an AutomobileVO's respective VIN
+   - If you followed this tutorial in order, these should post properly
+   ```
+   {
+       "sale_price": 42000,
+       "sales_person": 1,
+       "sales_customer": 1,
+       "automobile": "1234567890QWERTYU"
+   }
+   ```
 5. Press "Send" and Insomnia will return a POST request similar to this:
-    ```
-    {
-        "id": 1,
-        "sale_price": 42000,
-        "automobile": {
-            "model": "WRX STI",
-            "manufacturer": "Subaru",
-            "color": "Blue",
-            "year": 2022,
-            "vin": "1234567890QWERTYU",
-            "import_href": "/api/automobiles/4234567890QWERTYU/",
-            "status": "sold"
-        },
-        "sales_person": {
-            "name": "Isaiah Lin",
-            "number": "001",
-            "id": 1
-        },
-        "sales_customer": {
-            "name": "Isaiah Lin",
-            "address": "Diamond Bar, CA",
-            "phone": "5555555555",
-            "id": 1
-        }
-    }
-    ```
+   ```
+   {
+       "id": 1,
+       "sale_price": 42000,
+       "automobile": {
+           "model": "WRX STI",
+           "manufacturer": "Subaru",
+           "color": "Blue",
+           "year": 2022,
+           "vin": "1234567890QWERTYU",
+           "import_href": "/api/automobiles/4234567890QWERTYU/",
+           "status": "sold"
+       },
+       "sales_person": {
+           "name": "Isaiah Lin",
+           "number": "001",
+           "id": 1
+       },
+       "sales_customer": {
+           "name": "Isaiah Lin",
+           "address": "Diamond Bar, CA",
+           "phone": "5555555555",
+           "id": 1
+       }
+   }
+   ```
