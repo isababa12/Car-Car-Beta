@@ -41,6 +41,8 @@ docker compose up
 
 The `service-api` allows a user to create a service appointment. The automobile value object is polled from the `inventory-api` and is used to check if a vehicle entered by a user was purchased from the dealership. Vehicles that were purchased from the dealership are eligible for VIP treatment and denoted in the appointment model with the `discount` field.
 
+The front-end of the appointment microservice allows a user to create an appointment, get a list of all uncompleted and uncanceled appointments, and get a list of all appointments by VIN. It also allows a user to cancel or complete an appointment from the appointment list page.
+
 The models are currently set up so that if a technician is removed from the database, all appointments associated with that technician will also be removed (`on_delete=models.CASCADE`). An appointment is reliant on the availability of a technician and if one were to be removed from the dealership, it is important to also remove all appointments associated with that technician.
 
 The models are described below.
