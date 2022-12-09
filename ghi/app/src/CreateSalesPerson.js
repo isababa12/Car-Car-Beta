@@ -87,7 +87,7 @@ class CreateSalesPerson extends React.Component {
                         id="number"
                         className="form-control"
                       />
-                      <label htmlFor="number">Employee Number (eg: 3 digits)</label>
+                      <label htmlFor="number">Employee Number (use a unique number up to 4 digits)</label>
                       </div>
                     <button id="submit" className="btn btn-primary">
                       Create
