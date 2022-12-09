@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class CreateAppointment extends React.Component {
   constructor(props) {
@@ -161,7 +162,8 @@ class CreateAppointment extends React.Component {
           </div>
         </div>
         <div className={alertClasses} role="alert">
-          Appointment successfully created!
+          Appointment successfully created! Click{" "}
+          <Link to="/appointments">here</Link> to go back to appointments.
         </div>
       </div>
     );
