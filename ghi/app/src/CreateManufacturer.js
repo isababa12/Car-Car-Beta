@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class CreateManufacturer extends React.Component {
   constructor(props) {
@@ -84,7 +85,8 @@ class CreateManufacturer extends React.Component {
           </div>
         </div>
         <div className={alertClasses} role="alert">
-          Manufacturer successfully created!
+          Manufacturer successfully created! Click{" "}
+          <Link to="/manufacturers">here</Link> to go back to manufacturers.
         </div>
       </div>
     );
