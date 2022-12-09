@@ -31,7 +31,7 @@ docker compose up
 
 ---
 
-![diagram](./ghi\app\public\CarCar-microservice-diagram.png)
+![diagram](./resources/CarCar-microservice-diagram.png "microservice diagram")
 
 ## **Services**
 
