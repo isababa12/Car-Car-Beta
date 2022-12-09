@@ -68,12 +68,13 @@ class CreateAppointment extends React.Component {
     if (this.state.submitted) {
       alertClasses = "alert alert-success w-50 mx-auto mt-3";
     }
+    let today = new Date();
     return (
       <div className="container">
         <div className="row">
           <div className="offset-3 col-6">
             <div className="shadow p-4 mt-4">
-              <h1>Create a appointment</h1>
+              <h1>Create a service appointment</h1>
               <form onSubmit={this.handleSubmit} id="create-appointment-form">
                 <div className="form-floating mb-3">
                   <input
@@ -86,7 +87,7 @@ class CreateAppointment extends React.Component {
                     id="name"
                     className="form-control"
                   />
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="name">Owner name</label>
                 </div>
                 <div className="form-floating mb-3">
                   <input
@@ -97,6 +98,7 @@ class CreateAppointment extends React.Component {
                     type="text"
                     name="vehicle_vin"
                     id="vehicle_vin"
+                    maxLength={17}
                     className="form-control"
                   />
                   <label htmlFor="vehicle_vin">Vehicle VIN</label>
@@ -110,6 +112,8 @@ class CreateAppointment extends React.Component {
                     type="datetime-local"
                     name="time"
                     id="time"
+                    min={today.toISOString()}
+                    step="900"
                     className="form-control"
                   />
                   <label htmlFor="time">Time</label>

@@ -11,6 +11,7 @@ import TechnicianList from "./TechnicianList";
 import CreateTechnician from "./CreateTechnician";
 import AppointmentList from "./AppointmentList";
 import CreateAppointment from "./CreateAppointment";
+<<<<<<< HEAD
 import CreateSalesPerson from "./CreateSalesPerson"
 import SalesPersonList from "./SalespeopleList";
 import SalesCustomerList from "./SalesCustomerList";
@@ -18,6 +19,9 @@ import CreateSalesCustomer from "./CreateSalesCustomer";
 import SalesRecordList from "./SalesRecordList";
 import CreateSalesRecord from "./CreateSalesRecord";
 import SalesPersonSales from "./SalesPersonSales";
+=======
+import AppointmentsByVin from "./AppointmentsByVin";
+>>>>>>> 408cff1141aa1c717b804a5e7af35e3dbc513a01
 
 function App() {
   return (
@@ -45,6 +49,7 @@ function App() {
           <Route path="appointments">
             <Route index element={<AppointmentList />} />
             <Route path="new" element={<CreateAppointment />} />
+            <Route path="vin" element={<AppointmentsByVin />} />
           </Route>
           <Route path="salespeople">
             <Route index element={<SalesPersonList/>} />

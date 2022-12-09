@@ -78,6 +78,7 @@ class CreateAutomobile extends React.Component {
                     type="text"
                     name="color"
                     id="color"
+                    maxLength={50}
                     className="form-control"
                   />
                   <label htmlFor="color">Color</label>
@@ -104,6 +105,7 @@ class CreateAutomobile extends React.Component {
                     type="text"
                     name="vin"
                     id="vin"
+                    maxLength={17}
                     className="form-control"
                   />
                   <label htmlFor="vin">VIN</label>
