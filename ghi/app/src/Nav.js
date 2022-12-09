@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 
-
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
@@ -115,7 +114,15 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
-<<<<<<< HEAD
+                to="appointments/vin"
+              >
+                Get appointments by VIN
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
                 to="salespeople/"
               >
                 Salespeople
@@ -173,11 +180,6 @@ function Nav() {
                 to="salesrecord/new"
               >
                 Create a Sales Record
-=======
-                to="appointments/vin"
-              >
-                Appointments by VIN
->>>>>>> 408cff1141aa1c717b804a5e7af35e3dbc513a01
               </NavLink>
             </li>
           </ul>
