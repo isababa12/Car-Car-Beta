@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class CreateModel extends React.Component {
   constructor(props) {
@@ -120,7 +121,8 @@ class CreateModel extends React.Component {
           </div>
         </div>
         <div className={alertClasses} role="alert">
-          Vehicle model successfully created!
+          Vehicle model successfully created! Click{" "}
+          <Link to="/models">here</Link> to go back to models.
         </div>
       </div>
     );

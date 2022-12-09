@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class ModelList extends React.Component {
   constructor(props) {
@@ -20,7 +21,20 @@ class ModelList extends React.Component {
   render() {
     return (
       <>
-        <h2 className="my-3">Models</h2>
+        <div className="container p-0">
+          <div className="row">
+            <div className="col">
+              <h2 className="my-3">Models</h2>
+            </div>
+            <div className="col-sm-auto d-flex justify-content-center align-items-center">
+              <Link to="/models/new">
+                <button type="button" className="btn btn-primary">
+                  Create
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
         <table className="table table-striped">
           <thead>
             <tr>

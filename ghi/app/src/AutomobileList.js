@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class AutomobileList extends React.Component {
   constructor(props) {
@@ -20,7 +21,20 @@ class AutomobileList extends React.Component {
   render() {
     return (
       <>
-        <h2 className="my-3">Automobiles</h2>
+        <div className="container p-0">
+          <div className="row">
+            <div className="col">
+              <h2 className="my-3">Automobiles</h2>
+            </div>
+            <div className="col-sm-auto d-flex justify-content-center align-items-center">
+              <Link to="/automobiles/new">
+                <button type="button" className="btn btn-primary">
+                  Create
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -41,7 +55,9 @@ class AutomobileList extends React.Component {
                   <td>{automobile.model.manufacturer.name}</td>
                   <td>{automobile.model.name}</td>
                   <td>{automobile.color}</td>
-                  <td><img src={automobile.model.picture_url} width="175"/></td>
+                  <td>
+                    <img src={automobile.model.picture_url} width="175" />
+                  </td>
                 </tr>
               );
             })}
