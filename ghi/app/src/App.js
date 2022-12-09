@@ -11,14 +11,14 @@ import TechnicianList from "./TechnicianList";
 import CreateTechnician from "./CreateTechnician";
 import AppointmentList from "./AppointmentList";
 import CreateAppointment from "./CreateAppointment";
-import CreateSalesPerson from "./CreateSalesPerson"
+import AppointmentsByVin from "./AppointmentsByVin";
+import CreateSalesPerson from "./CreateSalesPerson";
 import SalesPersonList from "./SalespeopleList";
 import SalesCustomerList from "./SalesCustomerList";
 import CreateSalesCustomer from "./CreateSalesCustomer";
 import SalesRecordList from "./SalesRecordList";
 import CreateSalesRecord from "./CreateSalesRecord";
 import SalesPersonSales from "./SalesPersonSales";
-import AppointmentsByVin from "./AppointmentsByVin";
 
 function App() {
   return (
@@ -49,17 +49,17 @@ function App() {
             <Route path="vin" element={<AppointmentsByVin />} />
           </Route>
           <Route path="salespeople">
-            <Route index element={<SalesPersonList/>} />
-            <Route path="new" element={<CreateSalesPerson/>}/>
+            <Route index element={<SalesPersonList />} />
+            <Route path="new" element={<CreateSalesPerson />} />
           </Route>
           <Route path="salescustomer">
-            <Route index element={<SalesCustomerList/>} />
-            <Route path="new" element={<CreateSalesCustomer/>}/>
+            <Route index element={<SalesCustomerList />} />
+            <Route path="new" element={<CreateSalesCustomer />} />
           </Route>
           <Route path="salesrecord">
-            <Route index element={<SalesRecordList/>} />
-            <Route path="new" element={<CreateSalesRecord/>}/>
-            <Route path="filter" element={<SalesPersonSales/>}/>
+            <Route index element={<SalesRecordList />} />
+            <Route path="new" element={<CreateSalesRecord />} />
+            <Route path="filter" element={<SalesPersonSales />} />
           </Route>
         </Routes>
       </div>
