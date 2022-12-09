@@ -115,7 +115,6 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
-<<<<<<< HEAD
                 to="salespeople/"
               >
                 Salespeople
@@ -173,11 +172,9 @@ function Nav() {
                 to="salesrecord/new"
               >
                 Create a Sales Record
-=======
                 to="appointments/vin"
               >
                 Appointments by VIN
->>>>>>> 408cff1141aa1c717b804a5e7af35e3dbc513a01
               </NavLink>
             </li>
           </ul>
