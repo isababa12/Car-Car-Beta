@@ -115,7 +115,7 @@ def api_cancel_appointment(request, pk):
         {"canceled": appointment.canceled}
     )
 
-
+@require_http_methods(["PUT"])
 def api_complete_appointment(request, pk):
     appointment = Appointment.objects.get(id=pk)
     appointment.complete()
