@@ -56,7 +56,11 @@ class AutomobileList extends React.Component {
                   <td>{automobile.model.name}</td>
                   <td>{automobile.color}</td>
                   <td>
-                    <img src={automobile.model.picture_url} width="175" />
+                    <img
+                      alt=""
+                      src={automobile.model.picture_url}
+                      width="175"
+                    />
                   </td>
                 </tr>
               );
