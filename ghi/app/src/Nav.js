@@ -87,27 +87,9 @@ function Nav() {
               <NavLink
                 className="nav-link active"
                 aria-current="page"
-                to="salespeople/new/"
-              >
-                Create a Salesperson
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
                 to="salescustomer/"
               >
-                Sales Customer List
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
-                to="salescustomer/new/"
-              >
-                Create a Sales Customer
+                Sales Customers
               </NavLink>
             </li>
             <li className="nav-item">
@@ -116,7 +98,7 @@ function Nav() {
                 aria-current="page"
                 to="salesrecord/"
               >
-                List of Sales
+                Sales records
               </NavLink>
             </li>
             <li className="nav-item">
@@ -126,15 +108,6 @@ function Nav() {
                 to="salesrecord/filter"
               >
                 Salesperson Sales
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link active"
-                aria-current="page"
-                to="salesrecord/new"
-              >
-                Create a Sales Record
               </NavLink>
             </li>
           </ul>
